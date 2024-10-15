@@ -1,12 +1,16 @@
-import { useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
 import './index.css'
+import LandingPage from '../pages/landingPage/LandingPage'
 
 function App() {
 
   return (
-    <>
-      Interval App
-    </>
+    <div className='body'>
+      <Routes>
+        <Route path='/' element={ <LandingPage />}/>
+
+      </Routes>
+    </div>
   )
 }
 

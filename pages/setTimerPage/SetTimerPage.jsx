@@ -1,5 +1,6 @@
 import Navigation from '../../components/navigation/Navigation'
 import './settimerpage.css'
+import SetTimer from '../../components/setTimerFunc/setTimer'
 
 import React from 'react'
 
@@ -14,7 +15,8 @@ function SetTimerPage() {
             backgroundColor : "white",
             color : 'black',
         }}
-        >SetTimerPage</div>
+        ><SetTimer />
+        </div>
     </>
   )
 }

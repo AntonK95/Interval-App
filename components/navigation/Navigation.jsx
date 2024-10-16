@@ -16,8 +16,8 @@ function Navigation() {
           opacity: 1,
         }}
         transition={{
-          duration: 1,
-          ease: 'easeInOut',
+          duration: .5,
+          ease: 'linear',
         }}
         style={{
           position: 'fixed',
@@ -39,9 +39,9 @@ function Navigation() {
         initial={{ x: '-100%' }} // Startar utanför skärmen till vänster
         animate={{ x: menuOpen ? 0 : '-100%' }} // Glider in vid klick
         transition={{
-          type: 'spring',
-          stiffness: 70,
-          damping: 20,
+          type: 'tween',
+        //   stiffness: 70,
+        //   damping: 20,
         }}
         className="side-menu"
         style={{

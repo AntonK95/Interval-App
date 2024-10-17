@@ -16,18 +16,18 @@ function SetTimer() {
   
   const navigate = useNavigate();
   // useEffect för att uppdatera tiden när nedräkningen sker
-  useEffect(() => {
-    // Lyssnar på 'secondsUpdated' event och uppdaterar tiden
-    // timer.addEventListener('secondsUpdated', () => {
-    //   setTimeValues(timer.getTimeValues().toString(['minutes', 'seconds']));
-    // });
+  // useEffect(() => {
+  //   // Lyssnar på 'secondsUpdated' event och uppdaterar tiden
+  //   // timer.addEventListener('secondsUpdated', () => {
+  //   //   setTimeValues(timer.getTimeValues().toString(['minutes', 'seconds']));
+  //   // });
 
-    // Lyssnar på 'secondsUpdated' event och uppdaterar tiden
-    timer.addEventListener('secondsUpdated', () => {
-      const currentTime = timer.getTimeValues().toString(['minutes', 'seconds']);
-      // setLocalTimeValues(currentTime); // uppdatera lokal tid
-      setTimeValues(currentTime) // uppdatera global tid via props
-    });
+  //   // Lyssnar på 'secondsUpdated' event och uppdaterar tiden
+  //   timer.addEventListener('secondsUpdated', () => {
+  //     const currentTime = timer.getTimeValues().toString(['minutes', 'seconds']);
+  //     // setLocalTimeValues(currentTime); // uppdatera lokal tid
+  //     setTimeValues(currentTime) // uppdatera global tid via props
+  //   });
 
     // När timern är slut
     timer.addEventListener('targetAchieved', () => {
@@ -36,18 +36,18 @@ function SetTimer() {
     });
 
     // Rensar eventlyssnare när komponenten stängs
-    return () => {
-      timer.stop();
-      timer.removeEventListener('secondsUpdated');
-      timer.removeEventListener('targetAchieved');
-    };
-  }, [timer, setTimeValues]);
+  //   return () => {
+  //     timer.stop();
+  //     timer.removeEventListener('secondsUpdated');
+  //     timer.removeEventListener('targetAchieved');
+  //   };
+  // }, [timer, setTimeValues]);
 
   // Starta nedräkningen baserat på de valda minuterna
   const startTimer = () => {
     timer.start({ countdown: true, startValues: { minutes: selectedMinutes } });
     setIsRunning(true);
-    navigate('/DigitalCountDown'); // Navigera till nedräkningssida
+    // navigate('/DigitalCountDown'); // Navigera till nedräkningssida
   };
 
   // Återställ timern

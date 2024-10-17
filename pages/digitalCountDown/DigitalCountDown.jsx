@@ -1,7 +1,10 @@
 
-import React from 'react'
+import React, { useContext } from 'react'
+import TimerContext from '../../context/TimerContext'
 
-function DigitalCountDown({ timeValues }) {
+function DigitalCountDown() {
+
+  const { timeValues } = useContext(TimerContext); // Hämta timeValues från context
   return (
     <section className='digital-wrapper'>
         <div 

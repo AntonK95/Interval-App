@@ -1,12 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import Timer from 'easytimer.js'; // Importerar EasyTimer
+import React, { useContext, useState, useEffect } from 'react';
+// import Timer from 'easytimer.js'; // Importerar EasyTimer
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import TimerContext from '../../context/TimerContext';
 
-function SetTimer({ setTimeValues }) { // Ta emot props!!
-  const [selectedMinutes, setSelectedMinutes] = useState(0); // Håller koll på de valda minuterna, startvärde är nu noll
-  const [timeValues, setLocalTimeValues] = useState('00:00'); // Lokal state för att hålla reda på tiden
-  const [timer] = useState(new Timer()); // Skapar en ny instans av EasyTimer
+function SetTimer() { 
+
+  const { timer, timeValues, setTimeValues } = useContext(TimerContext); // hämta timer och setTimevalues från context
+  const [ selectedMinutes, setSelectedMinutes ] = useState(0);
+
+  // const [selectedMinutes, setSelectedMinutes] = useState(0); // Håller koll på de valda minuterna, startvärde är nu noll
+  // const [timeValues, setLocalTimeValues] = useState('00:00'); // Lokal state för att hålla reda på tiden
+  // const [timer] = useState(new Timer()); // Skapar en ny instans av EasyTimer
   const [isRunning, setIsRunning] = useState(false); // Håller reda på om timern körs eller ej
   
   const navigate = useNavigate();
@@ -20,7 +25,7 @@ function SetTimer({ setTimeValues }) { // Ta emot props!!
     // Lyssnar på 'secondsUpdated' event och uppdaterar tiden
     timer.addEventListener('secondsUpdated', () => {
       const currentTime = timer.getTimeValues().toString(['minutes', 'seconds']);
-      setLocalTimeValues(currentTime); // uppdatera lokal tid
+      // setLocalTimeValues(currentTime); // uppdatera lokal tid
       setTimeValues(currentTime) // uppdatera global tid via props
     });
 
@@ -42,7 +47,7 @@ function SetTimer({ setTimeValues }) { // Ta emot props!!
   const startTimer = () => {
     timer.start({ countdown: true, startValues: { minutes: selectedMinutes } });
     setIsRunning(true);
-    // navigate('/DigitalCountDown'); // Navigera till nedräkningssida
+    navigate('/DigitalCountDown'); // Navigera till nedräkningssida
   };
 
   // Återställ timern

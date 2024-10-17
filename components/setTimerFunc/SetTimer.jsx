@@ -17,7 +17,7 @@ function SetTimer() {
     // När timern är slut
     timer.addEventListener('targetAchieved', () => {
       setIsRunning(false);
-      alert('Time is up!');
+      alert('Time is up!'); // Här kopplar jag upp min timesUpPage
     });
 
     // Rensar eventlyssnare när komponenten stängs
@@ -61,7 +61,10 @@ function SetTimer() {
 
       {/* Karusell för att välja minuter */}
       <div className="carousel" 
-        style={{ color : 'black'
+        style={{ 
+          color : 'black',
+          display : 'flex',
+          placeContent : 'center',
         }}>
         <button
         style={{ 
@@ -82,9 +85,13 @@ function SetTimer() {
           style={{ 
             fontSize : 80, 
             fontWeight : 'bold',
-            marginLeft : '4rem',
-            marginRight : '4rem',
+            marginLeft : '2rem',
+            marginRight : '2rem',
             marginBottom : -25,
+            minWidth : '5rem',
+            display : 'flex',
+            justifyContent : 'center',
+            maxWidth : '5rem'
             }}>
           {selectedMinutes}</span>
           <p>minutes</p>
@@ -122,7 +129,7 @@ function SetTimer() {
         fontWeight : 'bold'
       }} 
       onClick={startTimer} disabled={isRunning}>STARTA TIMER</button>
-      <button onClick={resetTimer} style={{ backgroundColor: '#f44336' }}>Återställ</button>
+      {/* <button onClick={resetTimer} style={{ backgroundColor: '#f44336' }}>Återställ</button> */}
     </div>
   );
 }

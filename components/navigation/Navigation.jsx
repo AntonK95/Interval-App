@@ -1,6 +1,7 @@
-
+import './navigation.css'
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -54,17 +55,24 @@ function Navigation() {
           zIndex: 5, 
           padding: '2rem',
           color: 'white',
+          display : 'flex',
+          justifyContent : 'center',
+          alignItems : 'center',
         }}
       >
         <ul
         style={{
             listStyle : 'none',
-            // fontFamily : 'PT sans, sans-serif',
+            fontFamily : 'PT sans, sans-serif',
             fontSize : 24,
             fontWeight: 'bold'
         }}>
-          <li>ANALOG TIMER</li>
-          <li>DIGITAL TIMER</li>
+          <Link to={'/AnalogCountDown'}>
+            <li>ANALOG TIMER</li>
+          </Link>
+          <Link to={'/DigitalCountDown'}>
+            <li>DIGITAL TIMER</li>
+          </Link>
           <li>VISUAL TIMER</li>
           <li>TEXT TIMER</li>
           <li>CIRCLES TIMER</li>

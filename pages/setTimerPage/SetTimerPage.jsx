@@ -6,18 +6,17 @@ import React from 'react'
 
 function SetTimerPage() {
   return (
-    <>
-        <Navigation />
-        <div className='timerPage'
-        style={{
-            height : "100vh",
-            width : "100vw",
-            backgroundColor : "white",
-            color : 'black',
-        }}
-        ><SetTimer />
-        </div>
-    </>
+    
+        <section className='setTimer-wrapper'
+          // style={{
+          //     backgroundColor : "white",
+          //     color : 'black',
+          //     display : 'flex',
+          //     placeContent : 'center',
+          // }}
+          ><SetTimer />
+        </section>
+    
   )
 }
 

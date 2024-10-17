@@ -1,17 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import Timer from 'easytimer.js'; // Importerar EasyTimer
+import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
-function SetTimer() {
+function SetTimer({ setTimeValues }) { // Ta emot props!!
   const [selectedMinutes, setSelectedMinutes] = useState(0); // Håller koll på de valda minuterna, startvärde är nu noll
-  const [timeValues, setTimeValues] = useState('00:00'); // Tiden som visas på skärmen
+  const [timeValues, setLocalTimeValues] = useState('00:00'); // Lokal state för att hålla reda på tiden
   const [timer] = useState(new Timer()); // Skapar en ny instans av EasyTimer
   const [isRunning, setIsRunning] = useState(false); // Håller reda på om timern körs eller ej
-
+  
+  const navigate = useNavigate();
   // useEffect för att uppdatera tiden när nedräkningen sker
   useEffect(() => {
     // Lyssnar på 'secondsUpdated' event och uppdaterar tiden
+    // timer.addEventListener('secondsUpdated', () => {
+    //   setTimeValues(timer.getTimeValues().toString(['minutes', 'seconds']));
+    // });
+
+    // Lyssnar på 'secondsUpdated' event och uppdaterar tiden
     timer.addEventListener('secondsUpdated', () => {
-      setTimeValues(timer.getTimeValues().toString(['minutes', 'seconds']));
+      const currentTime = timer.getTimeValues().toString(['minutes', 'seconds']);
+      setLocalTimeValues(currentTime); // uppdatera lokal tid
+      setTimeValues(currentTime) // uppdatera global tid via props
     });
 
     // När timern är slut
@@ -26,12 +36,13 @@ function SetTimer() {
       timer.removeEventListener('secondsUpdated');
       timer.removeEventListener('targetAchieved');
     };
-  }, [timer]);
+  }, [timer, setTimeValues]);
 
   // Starta nedräkningen baserat på de valda minuterna
   const startTimer = () => {
     timer.start({ countdown: true, startValues: { minutes: selectedMinutes } });
     setIsRunning(true);
+    // navigate('/DigitalCountDown'); // Navigera till nedräkningssida
   };
 
   // Återställ timern
@@ -118,7 +129,7 @@ function SetTimer() {
       {timeValues}</div>
 
       {/* Starta och återställ knappar */}
-      <button
+      <motion.button
       style={{
         padding : '1rem 3rem',
         backgroundColor : 'white',
@@ -127,8 +138,17 @@ function SetTimer() {
         fontFamily : 'PT sans',
         fontSize : 24,
         fontWeight : 'bold'
-      }} 
-      onClick={startTimer} disabled={isRunning}>STARTA TIMER</button>
+      }}
+      // whileTap={{
+      //   backgroundColor : 'black',
+      //   color : 'white',
+      //   scale : 0.8,
+      //   }}
+      //   transition={{
+      //     duration : .8,
+      //     ease : "linear"
+      // }}
+      onClick={startTimer} disabled={isRunning}>STARTA TIMER</motion.button>
       {/* <button onClick={resetTimer} style={{ backgroundColor: '#f44336' }}>Återställ</button> */}
     </div>
   );

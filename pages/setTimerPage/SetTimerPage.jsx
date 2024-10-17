@@ -4,7 +4,7 @@ import SetTimer from '../../components/setTimerFunc/setTimer'
 
 import React from 'react'
 
-function SetTimerPage() {
+function SetTimerPage({ setTimeValues}) {
   return (
     
         <section className='setTimer-wrapper'
@@ -14,7 +14,7 @@ function SetTimerPage() {
           //     display : 'flex',
           //     placeContent : 'center',
           // }}
-          ><SetTimer />
+          ><SetTimer setTimeValues={setTimeValues}/> {/* Skickar setTimeValues till SetTimer */}
         </section>
     
   )

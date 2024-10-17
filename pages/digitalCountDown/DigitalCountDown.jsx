@@ -1,10 +1,13 @@
 
 import React from 'react'
 
-function DigitalCountDown() {
+function DigitalCountDown({ timeValues }) {
   return (
     <section className='digital-wrapper'>
-        <div style={{ color : 'black' }}>DigitalCountDown</div>
+        <div 
+        style={{ 
+          color : 'black' 
+        }}>{timeValues}</div>
     </section>
   )
 }

@@ -6,15 +6,19 @@ import TimerContext from '../../context/TimerContext';
 
 function SetTimer() { 
 
-  const { timer, timeValues, setTimeValues } = useContext(TimerContext); // hämta timer och setTimevalues från context
-  const [ selectedMinutes, setSelectedMinutes ] = useState(0);
+  const { 
+    timer, 
+    timeValues, setTimeValues, 
+    startTimer, selectedMinutes, setSelectedMinutes, 
+    isRunning } = useContext(TimerContext); // hämta timer och setTimevalues från context
+  // const [ selectedMinutes, setSelectedMinutes ] = useState(0);
 
   // const [selectedMinutes, setSelectedMinutes] = useState(0); // Håller koll på de valda minuterna, startvärde är nu noll
   // const [timeValues, setLocalTimeValues] = useState('00:00'); // Lokal state för att hålla reda på tiden
   // const [timer] = useState(new Timer()); // Skapar en ny instans av EasyTimer
-  const [isRunning, setIsRunning] = useState(false); // Håller reda på om timern körs eller ej
+  // const [isRunning, setIsRunning] = useState(false); // Håller reda på om timern körs eller ej
   
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   // useEffect för att uppdatera tiden när nedräkningen sker
   // useEffect(() => {
   //   // Lyssnar på 'secondsUpdated' event och uppdaterar tiden
@@ -29,11 +33,11 @@ function SetTimer() {
   //     setTimeValues(currentTime) // uppdatera global tid via props
   //   });
 
-    // När timern är slut
-    timer.addEventListener('targetAchieved', () => {
-      setIsRunning(false);
-      alert('Time is up!'); // Här kopplar jag upp min timesUpPage
-    });
+    // // När timern är slut
+    // timer.addEventListener('targetAchieved', () => {
+    //   setIsRunning(false);
+    //   alert('Time is up!'); // Här kopplar jag upp min timesUpPage
+    // });
 
     // Rensar eventlyssnare när komponenten stängs
   //   return () => {
@@ -43,26 +47,15 @@ function SetTimer() {
   //   };
   // }, [timer, setTimeValues]);
 
-  // Starta nedräkningen baserat på de valda minuterna
-  const startTimer = () => {
-    timer.start({ countdown: true, startValues: { minutes: selectedMinutes } });
-    setIsRunning(true);
-    // navigate('/DigitalCountDown'); // Navigera till nedräkningssida
-  };
-
-  // Återställ timern
-  const resetTimer = () => {
-    timer.reset();
-    setTimeValues('00:00');
-    setIsRunning(false);
-  };
-
   // Karusell för att välja minuter
   const handleMinuteChange = (change) => {
     const newMinutes = selectedMinutes + change;
     if (newMinutes >= 1 && newMinutes <= 60) { // Begränsar mellan 1 och 60 minuter
       setSelectedMinutes(newMinutes);
     }
+    console.log("Selected Minutes:", selectedMinutes);
+    console.log("Time Values:", timeValues);
+
   };
 
   return (
@@ -144,15 +137,6 @@ function SetTimer() {
         fontSize : 24,
         fontWeight : 'bold'
       }}
-      // whileTap={{
-      //   backgroundColor : 'black',
-      //   color : 'white',
-      //   scale : 0.8,
-      //   }}
-      //   transition={{
-      //     duration : .8,
-      //     ease : "linear"
-      // }}
       onClick={startTimer} disabled={isRunning}>STARTA TIMER</motion.button>
       {/* <button onClick={resetTimer} style={{ backgroundColor: '#f44336' }}>Återställ</button> */}
     </div>

@@ -127,7 +127,7 @@ function SetTimer() {
       {timeValues}</div>
 
       {/* Starta och återställ knappar */}
-      <motion.button
+      {/* <motion.button
       style={{
         padding : '1rem 3rem',
         backgroundColor : 'white',
@@ -137,7 +137,7 @@ function SetTimer() {
         fontSize : 24,
         fontWeight : 'bold'
       }}
-      onClick={startTimer} disabled={isRunning}>STARTA TIMER</motion.button>
+      onClick={startTimer} disabled={isRunning}>STARTA TIMER</motion.button> */}
       {/* <button onClick={resetTimer} style={{ backgroundColor: '#f44336' }}>Återställ</button> */}
     </div>
   );

@@ -1,26 +1,41 @@
 
 import React, { useContext } from 'react'
 import TimerContext from '../../context/TimerContext'
+import StopTimerBtn from '../../components/stopTimerBtn/StopTimerBtn';
+import IntervalHeader from '../../components/intervalHeader/IntervalHeader';
 
 function DigitalCountDown() {
 
   const { timeValues, restartTimer, stopTimer } = useContext(TimerContext); // Hämta timeValues från context
 
   return (
-    <section className='digital-wrapper'>
+    <section className='digital-wrapper'
+    style={{
+      height : '100dvh',
+      display : 'flex',
+      flexDirection : 'column',
+    }}>
+      {/* <p
+      style={{ 
+        color : 'black',
+        textAlign: 'center',
+        marginTop : '1rem',
+        marginBottom : 'auto',
+      }}
+      >Interval</p> */}
+      < IntervalHeader />
       <div
         style={{
           color: 'black',
           fontFamily: 'PT sans',
           fontSize: 80,
           fontWeight: 'bold',
-          display : 'flex',
-
+          margin : 'auto',
         }}>{timeValues}
       </div>
 
         {/* Gör en komponent av denna knapp */}
-      <button onClick={stopTimer}
+      {/* <button onClick={stopTimer}
         style={{
           padding: '1rem 3rem',
           backgroundColor: 'white',
@@ -30,8 +45,10 @@ function DigitalCountDown() {
           fontSize: 24,
           fontWeight: 'bold',
           marginTop : 'auto'
-        }}>Abort Timer
-      </button>
+        }}>
+          Stop Timer
+      </button> */}
+      <StopTimerBtn />
 
     </section>
   )

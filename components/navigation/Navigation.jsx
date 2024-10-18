@@ -2,9 +2,36 @@ import './navigation.css'
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleNavigation = (path) => {
+    navigate(path);
+    setMenuOpen(false);
+  }
+
+//   const navToSetTimePage = () => {
+//     addEventListener('click', () => {
+//         navigate('/SetTimerPage');
+//         setMenuOpen(false);
+//     });
+// };
+// const navToDigital = () => {
+//   addEventListener('click', () => {
+//       navigate('/DigitalCountDown');
+//       setMenuOpen(false);
+//   });
+// };
+// const navToAnalog = () => {
+//   addEventListener('click', () => {
+//       navigate('/AnalogCountDown');
+//       setMenuOpen(false);
+//   });
+// };
 
   return (
     <nav>
@@ -67,12 +94,9 @@ function Navigation() {
             fontSize : 24,
             fontWeight: 'bold'
         }}>
-          <Link to={'/AnalogCountDown'}>
-            <li>ANALOG TIMER</li>
-          </Link>
-          <Link to={'/DigitalCountDown'}>
-            <li>DIGITAL TIMER</li>
-          </Link>
+          <li onClick={() => handleNavigation('/SetTimerPage')}>SET TIMER</li>
+          <li onClick={() => handleNavigation('/AnalogCountDown')}>ANALOG TIMER</li>
+          <li onClick={() => handleNavigation('/DigitalCountDown')}>DIGITAL TIMER</li>        
           <li>VISUAL TIMER</li>
           <li>TEXT TIMER</li>
           <li>CIRCLES TIMER</li>

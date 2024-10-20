@@ -65,7 +65,8 @@ function SetTimer() {
         color : 'black',
         display : 'flex',
         flexDirection : 'column',
-        fontFamily: 'PT sans sans-serif'
+        fontFamily: 'PT sans sans-serif',
+        marginTop : 'auto'
         }}>
 
       {/* Karusell för att välja minuter */}
@@ -117,28 +118,14 @@ function SetTimer() {
       </div>
 
       {/* Visar tiden */}
-      <div 
+      {/* <div 
       style={{ 
         color : 'black', 
         fontSize: '48px', 
         margin: '20px',
         fontFamily : 'PT sans',
       }}>
-      {timeValues}</div>
-
-      {/* Starta och återställ knappar */}
-      {/* <motion.button
-      style={{
-        padding : '1rem 3rem',
-        backgroundColor : 'white',
-        border : '3px solid black',
-        color : 'black',
-        fontFamily : 'PT sans',
-        fontSize : 24,
-        fontWeight : 'bold'
-      }}
-      onClick={startTimer} disabled={isRunning}>STARTA TIMER</motion.button> */}
-      {/* <button onClick={resetTimer} style={{ backgroundColor: '#f44336' }}>Återställ</button> */}
+      {timeValues}</div> */}
     </div>
   );
 }

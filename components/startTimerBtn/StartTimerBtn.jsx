@@ -17,7 +17,17 @@ function StartTimerBtn() {
         color : 'black',
         fontFamily : 'PT sans',
         fontSize : 24,
-        fontWeight : 'bold'
+        fontWeight : 'bold',
+        marginBottom : '2rem',
+        marginTop : 'auto',
+      }}
+      transition={{
+        duration : .3,
+      }}
+      whileTap={{
+        scale : .9,
+        backgroundColor : 'black',
+        color : 'white',
       }}
       onClick={startTimer} disabled={isRunning}>STARTA TIMER</motion.button>
   )

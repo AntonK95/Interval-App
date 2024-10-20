@@ -19,7 +19,7 @@
     height: 115px;
     background-color: red;
     transform-origin: bottom center;
-    transform: rotate(0deg);
+    /* transform: rotate(0deg); */
 }
 
 .minutes-arm {
@@ -29,7 +29,7 @@
     margin-top: -125px;
     background-color: black;
     transform-origin: bottom center;
-    transform: rotate(0deg);
+    /* transform: rotate(0deg); */
 }
 
 /* .seconds-arm-active {

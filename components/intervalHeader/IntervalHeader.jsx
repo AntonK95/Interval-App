@@ -18,11 +18,13 @@ function IntervalHeader() {
             style={{
                 color: 'black',
                 textAlign: 'center',
-                marginTop: '1rem',
+                marginTop: '.5rem',
                 marginBottom: 'auto',
+                fontFamily : 'PT sans',
+                fontSize : 20,
             }}
             onClick={navToSetTimePage}
-        >Interval</p>
+        >interval</p>
     )
 }
 

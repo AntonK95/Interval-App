@@ -40,33 +40,7 @@ export const TimerProvider = ({ children }) => {
     };
   }, [timer]);
 
-  // Starta nedräkningen baserat på de valda minuterna
-  // const startTimer = () => {
-  //   console.log('Starting timer with selected minutes:', selectedMinutes);
-  //   timer.start({ countdown: true, startValues: { minutes: selectedMinutes } });
-  //   setIsRunning(true);
-  //   // navigate('/DigitalCountDown'); // Navigera till nedräkningssida
-  // };
 
-//   const startTimer = () => {
-//     console.log('Starting timer with selected minutes:', selectedMinutes);
-//     // Sätt timeValues till den valda tiden innan timern startar
-//     const initialTimeValues = `${String(selectedMinutes).padStart(2, '0')}:00`;
-//     setTimeValues(initialTimeValues); // Sätter timeValues till vald tid
-//     timer.start({ countdown: true, startValues: { minutes: selectedMinutes } });
-//     setIsRunning(true);
-// };
-// const startTimer = () => {
-//   console.log('Starting timer with selected minutes:', selectedMinutes);
-  
-//   // Sätt timeValues till den valda tiden innan timern startar
-//   const initialTimeValues = `${String(selectedMinutes).padStart(2, '0')}:00`;
-//   setTimeValues(initialTimeValues); // Sätter timeValues till vald tid
-
-//   // Starta timern
-//   timer.start({ countdown: true, startValues: { minutes: selectedMinutes } });
-//   setIsRunning(true);
-// };
 const startTimer = () => {
   console.log('Starting timer with selected minutes:', selectedMinutes);
 
@@ -77,6 +51,7 @@ const startTimer = () => {
   // Starta timern
   timer.start({ countdown: true, startValues: { minutes: selectedMinutes } });
   setIsRunning(true);
+  navigate('/DigitalCountDown'); // Navigera till nedräkningssida
 };
 
 

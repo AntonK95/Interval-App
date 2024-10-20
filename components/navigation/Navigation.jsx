@@ -1,7 +1,6 @@
 import './navigation.css'
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { delay, motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
 function Navigation() {
@@ -13,25 +12,6 @@ function Navigation() {
     navigate(path);
     setMenuOpen(false);
   }
-
-//   const navToSetTimePage = () => {
-//     addEventListener('click', () => {
-//         navigate('/SetTimerPage');
-//         setMenuOpen(false);
-//     });
-// };
-// const navToDigital = () => {
-//   addEventListener('click', () => {
-//       navigate('/DigitalCountDown');
-//       setMenuOpen(false);
-//   });
-// };
-// const navToAnalog = () => {
-//   addEventListener('click', () => {
-//       navigate('/AnalogCountDown');
-//       setMenuOpen(false);
-//   });
-// };
 
   return (
     <nav>
@@ -67,9 +47,8 @@ function Navigation() {
         initial={{ x: '-100%' }} // Startar utanför skärmen till vänster
         animate={{ x: menuOpen ? 0 : '-100%' }} // Glider in vid klick
         transition={{
-          type: 'tween',
-        //   stiffness: 70,
-        //   damping: 20,
+          // type: 'tween',
+          duration : .5,
         }}
         className="side-menu"
         style={{
@@ -93,13 +72,92 @@ function Navigation() {
             fontFamily : 'PT sans, sans-serif',
             fontSize : 24,
             fontWeight: 'bold'
-        }}>
-          <li onClick={() => handleNavigation('/SetTimerPage')}>SET TIMER</li>
-          <li onClick={() => handleNavigation('/AnalogCountDown')}>ANALOG TIMER</li>
-          <li onClick={() => handleNavigation('/DigitalCountDown')}>DIGITAL TIMER</li>        
-          <li>VISUAL TIMER</li>
-          <li>TEXT TIMER</li>
-          <li>CIRCLES TIMER</li>
+        }}
+        >
+          <motion.li
+          initial={{
+            opacity : 0,
+            x : '-100%'
+          }} 
+          whileInView={{
+            opacity : 1,
+            x : 0,
+          }}
+          transition={{
+            duration : .5,
+            delay : .1,
+          }}
+          onClick={() => handleNavigation('/SetTimerPage')}>SET TIMER</motion.li>
+          <motion.li
+          initial={{
+            opacity : 0,
+            x : '-100%'
+          }} 
+          whileInView={{
+            opacity : 1,
+            x : 0,
+          }}
+          transition={{
+            duration : .5,
+            delay : .2,
+          }}
+          onClick={() => handleNavigation('/AnalogCountDown')}>ANALOG TIMER</motion.li>
+          <motion.li 
+          initial={{
+            opacity : 0,
+            x : '-100%'
+          }} 
+          whileInView={{
+            opacity : 1,
+            x : 0,
+          }}
+          transition={{
+            duration : .5,
+            delay : .3,
+          }}
+          onClick={() => handleNavigation('/DigitalCountDown')}>DIGITAL TIMER</motion.li>        
+          <motion.li
+          initial={{
+            opacity : 0,
+            x : '-100%'
+          }} 
+          whileInView={{
+            opacity : 1,
+            x : 0,
+          }}
+          transition={{
+            duration : .5,
+            delay : .4,
+          }}
+          >VISUAL TIMER</motion.li>
+          <motion.li
+          initial={{
+            opacity : 0,
+            x : '-100%'
+          }} 
+          whileInView={{
+            opacity : 1,
+            x : 0,
+          }}
+          transition={{
+            duration : .5,
+            delay : .5,
+          }}
+          >TEXT TIMER</motion.li>
+          <motion.li
+          initial={{
+            opacity : 0,
+            x : '-100%'
+          }} 
+          whileInView={{
+            opacity : 1,
+            x : 0,
+          }}
+          transition={{
+            duration : .5,
+            delay : .6,
+          }}
+          >CIRCLES TIMER</motion.li>
         </ul>
       </motion.div>
     </nav>

@@ -3,6 +3,7 @@ import React from 'react'
 import { createContext, useState, useEffect } from 'react'
 import Timer from 'easytimer.js'
 import { useNavigate } from 'react-router-dom';
+import TimesUp from '../components/timeIsUp/TimesUp';
 
 const TimerContext = createContext();
 
@@ -14,6 +15,7 @@ export const TimerProvider = ({ children }) => {
 
   const [selectedMinutes, setSelectedMinutes] = useState(0);
   const [isRunning, setIsRunning] = useState(false); // Håller reda på om timern körs eller ej
+  const [isTimeIsUp, setIsTimeIsUp] = useState(false); // State för att se om tiden är slut eller inte
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,11 +34,12 @@ export const TimerProvider = ({ children }) => {
     // När timern är slut
     timer.addEventListener('targetAchieved', () => {
       setIsRunning(false);
-      alert('Time is up!'); // Här kopplar jag upp min timesUpPage
+      setIsTimeIsUp(true);
     });
 
     return () => {
       timer.removeEventListener('secondsUpdated');
+      timer.removeEventListener('targetAchieved');
     };
   }, [timer]);
 
@@ -51,6 +54,7 @@ const startTimer = () => {
   // Starta timern
   timer.start({ countdown: true, startValues: { minutes: selectedMinutes } });
   setIsRunning(true);
+  setIsTimeIsUp(false); // Återställ time is up vid start av nedräkning
   navigate('/DigitalCountDown'); // Navigera till nedräkningssida
 };
 
@@ -61,6 +65,7 @@ const startTimer = () => {
     timer.reset();
     setTimeValues('00:00');
     setIsRunning(false);
+    setIsTimeIsUp(false);
   };
 
   // Återställ timern
@@ -68,6 +73,7 @@ const startTimer = () => {
     timer.stop();
     setTimeValues('00:00');
     setIsRunning(false);
+    setIsTimeIsUp(false);
   };
 
 
@@ -85,6 +91,7 @@ const startTimer = () => {
         isRunning,
       }}>
       {children}
+      {isTimeIsUp && <TimesUp />}{/* Time is up component */}
     </TimerContext.Provider>
   )
 }

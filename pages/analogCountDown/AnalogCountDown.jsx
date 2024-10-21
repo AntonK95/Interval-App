@@ -4,6 +4,8 @@ import IntervalHeader from '../../components/intervalHeader/IntervalHeader';
 import StopTimerBtn from '../../components/stopTimerBtn/StopTimerBtn';
 import TimerContext from '../../context/TimerContext';
 
+import { motion } from 'framer-motion';
+
 import './analogCountDown.css';
 
 function AnalogCountDown() {
@@ -47,25 +49,62 @@ function AnalogCountDown() {
   }, [timeValues, selectedMinutes]);
 
   return (
-    <section className='analog-wrapper'
+    <motion.section className='analog-wrapper'
       style={{
         height: '100dvh',
+        width : '100vw',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'space-evenly'
       }}
+      initial={{
+        opacity : 0,
+        x : '-100%',
+      }}
+      animate={{
+        opacity : 1,
+        x : 0,
+      }}
+      transition={{
+        duration : .3,
+      }}
     >
       <IntervalHeader />
       <section className="stopwatch">
-        <div className="seconds-arm"
-          style={{ transform: `rotate(${secondsRotation}deg)` }}></div>
-        <div className="minutes-arm"
-          style={{ transform: `rotate(${minutesRotation}deg)` }}></div>
+      <svg width="278" height="278">
+            <circle
+                cx="139" // Center x-koordinater
+                cy="139" // Center y-koordinater
+                r="130" // Raduis
+                fill="none"
+                stroke="black"
+                strokeWidth="10"
+                strokeDasharray="2, 10" // Här definierar du hur långt sträckorna och mellanrummen är
+                strokeDashoffset="0"   // Här kan du animera för att flytta offset
+                strokeLinecap="butt"   // Hur linjens ände ska se ut
+            />
+        </svg>
+        <motion.div className="seconds-arm"
+          style={{ transform: `rotate(${secondsRotation}deg)` }}
+          animate={{
+            rotate : secondsRotation
+          }}
+          transition={{
+            ease : 'linear',
+          }}></motion.div>
+        <motion.div className="minutes-arm"
+          style={{ transform: `rotate(${minutesRotation}deg)` }}
+          animate={{
+            rotate : minutesRotation
+          }}
+          transition={{
+            ease : 'linear',
+          }}></motion.div>
       </section>
       <div style={{ color: 'black' }}>{timeValues}</div>
       <StopTimerBtn />
-    </section>
+    </motion.section>
   );
 }
 

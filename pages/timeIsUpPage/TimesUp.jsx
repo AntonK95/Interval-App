@@ -6,7 +6,7 @@ import SetNewTimerBtn from '../../components/setNewTimerBtn/SetNewTimerBtn';
 
 function TimesUp() {
     return (
-        <section className='timesup-section'
+        <motion.section className='timesup-section'
             style={{
                 position: 'fixed',
                 top: 0,
@@ -19,7 +19,21 @@ function TimesUp() {
                 justifyContent: 'center',
                 alignItems: 'center',
                 fontSize: '2rem',
-            }}>
+            }}
+            initial={{
+                opacity : 0,
+                scale : .2,
+                borderRadius : '50%'
+            }}
+            animate={{
+                opacity : 1,
+                scale : 1,
+                borderRadius : 0
+            }}
+            transition={{
+                duration : .3
+            }}
+            >
             <motion.figure className='circle circle1'
             animate={{
                 height : 550,
@@ -95,7 +109,7 @@ function TimesUp() {
                 </motion.figure>
             </motion.figure>
         <SetNewTimerBtn />
-        </section>
+        </motion.section>
     )
 }
 

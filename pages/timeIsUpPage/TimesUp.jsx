@@ -2,6 +2,7 @@
 import './timesup.css'
 import React from 'react'
 import { motion } from 'framer-motion';
+import SetNewTimerBtn from '../../components/setNewTimerBtn/SetNewTimerBtn';
 
 function TimesUp() {
     return (
@@ -93,6 +94,7 @@ function TimesUp() {
                     </motion.figure>
                 </motion.figure>
             </motion.figure>
+        <SetNewTimerBtn />
         </section>
     )
 }

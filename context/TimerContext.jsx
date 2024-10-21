@@ -3,7 +3,7 @@ import React from 'react'
 import { createContext, useState, useEffect } from 'react'
 import Timer from 'easytimer.js'
 import { useNavigate } from 'react-router-dom';
-import TimesUp from '../components/timeIsUp/TimesUp';
+// import TimesUp from '../components/timeIsUp/TimesUp';
 
 const TimerContext = createContext();
 
@@ -35,6 +35,7 @@ export const TimerProvider = ({ children }) => {
     timer.addEventListener('targetAchieved', () => {
       setIsRunning(false);
       setIsTimeIsUp(true);
+      navigate('/TimesUp');
     });
 
     return () => {
@@ -49,7 +50,7 @@ const startTimer = () => {
 
   // Sätt timeValues till den valda tiden
   const initialTimeValues = `${String(selectedMinutes).padStart(2, '0')}:00`;
-  setTimeValues(initialTimeValues); // Sätter timeValues till vald tid
+  setTimeValues(initialTimeValues);
 
   // Starta timern
   timer.start({ countdown: true, startValues: { minutes: selectedMinutes } });
@@ -91,7 +92,7 @@ const startTimer = () => {
         isRunning,
       }}>
       {children}
-      {isTimeIsUp && <TimesUp />}{/* Time is up component */}
+      {/* {isTimeIsUp && <TimesUp />}Time is up component */}
     </TimerContext.Provider>
   )
 }

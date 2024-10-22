@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { createContext, useState, useEffect } from 'react'
+import { createContext, useState, useEffect, useRef} from 'react'
 import Timer from 'easytimer.js'
 import { useNavigate } from 'react-router-dom';
 // import TimesUp from '../components/timeIsUp/TimesUp';
@@ -16,7 +16,15 @@ export const TimerProvider = ({ children }) => {
   const [selectedMinutes, setSelectedMinutes] = useState(0);
   const [isRunning, setIsRunning] = useState(false); // Håller reda på om timern körs eller ej
   const [isTimeIsUp, setIsTimeIsUp] = useState(false); // State för att se om tiden är slut eller inte
+  const [isInterval, setIsInterval] = useState(false); // Interval eller inte
   const navigate = useNavigate();
+
+  // useRef för att hämta det senaste värdet av isInterval
+  const isIntervalRef = useRef(isInterval);
+
+  useEffect(() => {
+    isIntervalRef.current = isInterval;
+  }, [isInterval]);
 
   useEffect(() => {
     // timer.addEventListener('secondsUpdated', () => {
@@ -31,23 +39,46 @@ export const TimerProvider = ({ children }) => {
     });
 
 
-    // När timern är slut
-    timer.addEventListener('targetAchieved', () => {
-      setIsRunning(false);
-      setIsTimeIsUp(true);
-      navigate('/TimesUp');
-    });
+    // // När timern är slut
+    // timer.addEventListener('targetAchieved', () => {
+    //   console.log('Interval box checked:', isInterval);
+    //   if(isInterval) { // Om interval återställ timer
+    //     console.log('Inteval checked, restarting timer when time ends')
+    //     timer.start({ countdown: true, startValues: { minutes : selectedMinutes } });
+    //   } else {
+    //     setIsRunning(false);
+    //     setIsTimeIsUp(true);
+    //     navigate('/TimesUp');
+    //   }
+    // });
+    const handleTargetAchieved = () => {
+      const currentIsInterval = isIntervalRef.current;
+      // console.log('Timer finished. isInterval:', isInterval);
+      console.log('Timer finished. isInterval:', currentIsInterval);
+      if (currentIsInterval) { // Om interval är aktivt, starta om timern
+        console.log('Interval checked, restarting timer when time ends');
+        timer.start({ countdown: true, startValues: { minutes: selectedMinutes } });
+      } else { // Annars stoppa timern och navigera
+        setIsRunning(false);
+        setIsTimeIsUp(true);
+        navigate('/TimesUp');
+      }
+    };
+  
+    // Lägg till eventlyssnare för när timern är slut
+    timer.addEventListener('targetAchieved', handleTargetAchieved);
+  
 
     return () => {
       timer.removeEventListener('secondsUpdated');
       timer.removeEventListener('targetAchieved');
     };
-  }, [timer]);
+  }, [timer, selectedMinutes, isInterval, navigate]);
 
 
 const startTimer = () => {
   console.log('Starting timer with selected minutes:', selectedMinutes);
-
+  console.log('isInterval when starting timer:', isInterval)
   // Sätt timeValues till den valda tiden
   const initialTimeValues = `${String(selectedMinutes).padStart(2, '0')}:00`;
   setTimeValues(initialTimeValues);
@@ -90,6 +121,8 @@ const startTimer = () => {
         restartTimer,
         stopTimer,
         isRunning,
+        isInterval,
+        setIsInterval,
       }}>
       {children}
       {/* {isTimeIsUp && <TimesUp />}Time is up component */}

@@ -21,17 +21,17 @@ function AnalogCountDown() {
 
     // Dela upp timeValues i sekunder och minuter
     const [parsedMinutes, parsedSeconds] = timeValues.split(':').map(Number);
-    console.log('Parsed minutes:', parsedMinutes); // Logga parsed minutes
-    console.log('Parsed seconds:', parsedSeconds); // Logga parsed seconds
+    // console.log('Parsed minutes:', parsedMinutes); // Logga parsed minutes
+    // console.log('Parsed seconds:', parsedSeconds); // Logga parsed seconds
 
     // Kolla om selectedMinutes är korrekt
-    console.log('Selected minutes:', selectedMinutes);
+    //  console.log('Selected minutes:', selectedMinutes);
 
     // Räkna ut kvarstående sekunder
     const totalSecondsFromSelectedMinutes = selectedMinutes * 60;
     const remainingSeconds = totalSecondsFromSelectedMinutes - (parsedMinutes * 60 + parsedSeconds);
 
-    console.log('Total seconds from selected minutes:', totalSecondsFromSelectedMinutes); // Logga total seconds
+    // console.log('Total seconds from selected minutes:', totalSecondsFromSelectedMinutes); // Logga total seconds
     console.log('Remaining seconds:', remainingSeconds); // Logga kvarstående sekunder
 
     if (remainingSeconds < 0) {

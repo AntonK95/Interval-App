@@ -84,7 +84,7 @@ function Navigation() {
             x : 0,
           }}
           transition={{
-            duration : .5,
+            duration : .3,
             delay : .1,
           }}
           onClick={() => handleNavigation('/SetTimerPage')}>SET TIMER</motion.li>
@@ -98,7 +98,7 @@ function Navigation() {
             x : 0,
           }}
           transition={{
-            duration : .5,
+            duration : .3,
             delay : .2,
           }}
           onClick={() => handleNavigation('/AnalogCountDown')}>ANALOG TIMER</motion.li>
@@ -112,7 +112,7 @@ function Navigation() {
             x : 0,
           }}
           transition={{
-            duration : .5,
+            duration : .3,
             delay : .3,
           }}
           onClick={() => handleNavigation('/DigitalCountDown')}>DIGITAL TIMER</motion.li>        
@@ -126,7 +126,7 @@ function Navigation() {
             x : 0,
           }}
           transition={{
-            duration : .5,
+            duration : .3,
             delay : .4,
           }}
           >VISUAL TIMER</motion.li>
@@ -140,7 +140,7 @@ function Navigation() {
             x : 0,
           }}
           transition={{
-            duration : .5,
+            duration : .3,
             delay : .5,
           }}
           >TEXT TIMER</motion.li>
@@ -154,7 +154,7 @@ function Navigation() {
             x : 0,
           }}
           transition={{
-            duration : .5,
+            duration : .3,
             delay : .6,
           }}
           >CIRCLES TIMER</motion.li>

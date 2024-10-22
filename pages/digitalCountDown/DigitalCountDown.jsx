@@ -13,6 +13,8 @@ function DigitalCountDown() {
     <motion.section className='digital-wrapper'
     style={{
       height : '100dvh',
+      width : '100vw',
+      alignItems : 'center',
       display : 'flex',
       flexDirection : 'column',
     }}

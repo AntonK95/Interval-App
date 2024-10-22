@@ -14,6 +14,7 @@ function StartTimerBtn() {
         padding : '1rem 3rem',
         backgroundColor : 'white',
         border : '3px solid black',
+        borderRadius : 5,
         color : 'black',
         fontFamily : 'PT sans',
         fontSize : 24,

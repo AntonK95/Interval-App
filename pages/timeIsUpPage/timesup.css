@@ -1,0 +1,33 @@
+
+.circle {
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.circle1 {
+    height: 500px;
+    aspect-ratio: 1;
+    /* background-color: #ff6666; */
+}
+
+.circle2 {
+    height: 400px;
+    aspect-ratio: 1;
+    /* background-color: #ffcc66; */
+}
+
+.circle3 {
+    height: 300px;
+    aspect-ratio: 1;
+    /* background-color: #66ff66; */
+}
+
+.circle4 {
+    height: 200px;
+    aspect-ratio: 1;
+    /* background-color: #66ccff; */
+}

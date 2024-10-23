@@ -1,6 +1,6 @@
 // import Navigation from '../../components/navigation/Navigation'
 import './settimerpage.css'
-import SetTimer from '../../components/setTimerFunc/setTimer'
+import SetTimer from '../../components/setTimerFunc/SetTimer'
 import { motion } from 'framer-motion'
 
 import React, { useContext, useEffect } from 'react'

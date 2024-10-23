@@ -64,7 +64,7 @@ Gör den här istället */
 
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 #0B6E4F90;
+    box-shadow: 0 0 0 #00000090;
     rotate: 20deg;
   }
 
@@ -73,11 +73,11 @@ Gör den här istället */
   }
 
   75% {
-    box-shadow: 0 0 0 10px #0B6E4F60;
+    box-shadow: 0 0 0 10px #0000005f;
   }
 
   100% {
-    box-shadow: 0 0 0 13px #0B6E4F30;
+    box-shadow: 0 0 0 13px #00000028;
     rotate: 0;
   }
 } 

@@ -47,7 +47,6 @@ function Navigation() {
         initial={{ x: '-100%' }} // Startar utanför skärmen till vänster
         animate={{ x: menuOpen ? 0 : '-100%' }} // Glider in vid klick
         transition={{
-          // type: 'tween',
           duration : .5,
         }}
         className="side-menu"

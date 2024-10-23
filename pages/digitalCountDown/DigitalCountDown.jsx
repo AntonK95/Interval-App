@@ -27,7 +27,7 @@ function DigitalCountDown() {
       x : 0,
     }}
     transition={{
-      duration : .3,
+      duration : .5,
     }}
     >
       < IntervalHeader />

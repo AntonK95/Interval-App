@@ -12,15 +12,15 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3  # Denna bör fortsätta fungera bra
 
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: '20'  # Sätt här till version 20
 
       - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+        run: npm install  # Använd npm install direkt istället för npm-install action
 
       - name: Build project
         run: npm run build
@@ -29,7 +29,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: production-files
-          path: ./dist
+          path: ./build  # Kontrollera att detta är rätt
 
   deploy:
     name: Deploy
@@ -42,10 +42,10 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: production-files
-          path: ./dist
+          path: ./dist  # Kontrollera att detta är rätt
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./dist  # Kontrollera att detta är rätt

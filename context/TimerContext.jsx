@@ -27,10 +27,6 @@ export const TimerProvider = ({ children }) => {
   }, [isInterval]);
 
   useEffect(() => {
-    // timer.addEventListener('secondsUpdated', () => {
-    //   setTimeValues(timer.getTimeValues().toString(['minutes', 'seconds']));
-    //   console.log('Updated TimeValues:', timeValues);
-    // });
 
     timer.addEventListener('secondsUpdated', () => {
       const updatedTime = timer.getTimeValues().toString(['minutes', 'seconds']);
@@ -38,19 +34,6 @@ export const TimerProvider = ({ children }) => {
       console.log('Updated TimeValues:', updatedTime); // Loggar det uppdaterade värdet
     });
 
-
-    // // När timern är slut
-    // timer.addEventListener('targetAchieved', () => {
-    //   console.log('Interval box checked:', isInterval);
-    //   if(isInterval) { // Om interval återställ timer
-    //     console.log('Inteval checked, restarting timer when time ends')
-    //     timer.start({ countdown: true, startValues: { minutes : selectedMinutes } });
-    //   } else {
-    //     setIsRunning(false);
-    //     setIsTimeIsUp(true);
-    //     navigate('/TimesUp');
-    //   }
-    // });
     const handleTargetAchieved = () => {
       const currentIsInterval = isIntervalRef.current;
       // console.log('Timer finished. isInterval:', isInterval);
@@ -61,6 +44,8 @@ export const TimerProvider = ({ children }) => {
       } else { // Annars stoppa timern och navigera
         setIsRunning(false);
         setIsTimeIsUp(true);
+        setSelectedMinutes(0); // Nollställ den valda tiden när tiden är slut
+        setTimeValues('00:00'); // Nollställ timern när tiden är slut
         navigate('/TimesUp');
       }
     };
@@ -103,7 +88,8 @@ const startTimer = () => {
   // Återställ timern
   const stopTimer = () => {
     timer.stop();
-    setTimeValues('00:00');
+    setTimeValues('00:00'); // Sätt värder till 0 vid stop av timer
+    // setSelectedMinutes(0); // Nollställ timer vid stopp. Orsakar att minutvisaren inte nollställs..
     setIsRunning(false);
     setIsTimeIsUp(false);
   };

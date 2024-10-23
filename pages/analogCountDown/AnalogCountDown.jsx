@@ -76,12 +76,12 @@ function AnalogCountDown() {
             <circle
                 cx="139" // Center x-koordinater
                 cy="139" // Center y-koordinater
-                r="130" // Raduis
+                r="130" // Radius
                 fill="none"
                 stroke="black"
                 strokeWidth="10"
-                strokeDasharray="2, 10" // Här definierar du hur långt sträckorna och mellanrummen är
-                strokeDashoffset="0"   // Här kan du animera för att flytta offset
+                strokeDasharray="2, 10" // Här definieras hur långt sträckorna och mellanrummen är
+                strokeDashoffset="1"   // Här kan man "vrida" på den streckade urtavlan
                 strokeLinecap="butt"   // Hur linjens ände ska se ut
             />
         </svg>

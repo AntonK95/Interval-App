@@ -10,7 +10,8 @@ function LandingPage() {
     <section className='landingpage-wrapper'>
 
       <Link to={'/SetTimerPage'}>
-          <motion.img src={'./public/img/logo.svg'} alt="Interval logo"
+          <motion.img src={<img src={`${import.meta.env.BASE_URL}images/logo.svg`} alt="Logo" />
+          } alt="Interval logo"
           initial={{
               opacity : 0,
           }}

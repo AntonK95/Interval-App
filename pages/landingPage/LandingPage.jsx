@@ -11,7 +11,7 @@ function LandingPage() {
     <section className='landingpage-wrapper'>
 
       <Link to={'/SetTimerPage'}>
-          <motion.img src={logo} alt="Logo" /> 
+          <motion.img src={logo} alt="Logo" 
           initial={{
               opacity : 0,
           }}

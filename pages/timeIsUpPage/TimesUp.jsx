@@ -89,7 +89,7 @@ function TimesUp() {
                                     display: 'flex',
                                     flexDirection: 'column',
                                 }}>
-                                <motion.img src="/img/alarmicon.svg" alt="Alarm clock icon"
+                                <motion.img src="./img/alarmicon.svg" alt="Alarm clock icon"
                                     initial={{
                                         rotate: 0
                                     }}

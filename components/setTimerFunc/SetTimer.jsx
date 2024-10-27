@@ -46,7 +46,7 @@ function SetTimer() {
           border : 'none',
         }} 
         onClick={() => handleMinuteChange(-1)} disabled={selectedMinutes === 1}>
-          <img src="/img/Vector.svg" alt="Decrease minutes" />
+          <img src="./img/Vector.svg" alt="Decrease minutes" />
         </button>
         <div className='carousel-minutes'
         style={{ 

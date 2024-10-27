@@ -77,7 +77,7 @@ function SetTimer() {
           rotate : '180deg'
         }}
         onClick={() => handleMinuteChange(1)} disabled={selectedMinutes === 60}>
-          <img src="/img/Vector.svg" alt="Increase minutes" />
+          <img src="./img/Vector.svg" alt="Increase minutes" />
         </button>
       </div>
 

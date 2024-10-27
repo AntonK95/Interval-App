@@ -1,4 +1,5 @@
 import './landingpage.css'
+import logo from '/public/img/logo.svg'
 
 import { motion } from 'framer-motion'
 
@@ -10,7 +11,7 @@ function LandingPage() {
     <section className='landingpage-wrapper'>
 
       <Link to={'/SetTimerPage'}>
-          <motion.img src={<img src={`${import.meta.env.BASE_URL}images/logo.svg`} alt="Logo" />
+          <motion.img src={<img src={logo} alt="Logo" />
           } alt="Interval logo"
           initial={{
               opacity : 0,
